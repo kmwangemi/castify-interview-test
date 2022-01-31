@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchData } from './api';
 import Loader from './components/loader/Loader';
-import Message from './components/message/Message';
 import Card from './components/card/Card';
 
 import './App.css';
@@ -18,28 +17,18 @@ const App = () => {
       fetchAlbums()
    }, [])
 
-   // const onButtonClick = () => {
-   //    if (ref.current) {
-   //       ref.current.handleUpdate();
-   //    }
-   // };
-
    if (!albums) {
-      return <Loader/>;
+      return <Loader />;
    }
 
-   console.log({ albums });
-
    return (
-      <div className='Wrapper'>
-         <main>
-            {
-               albums.map(album => (
-                  <Card key={album.id} album={album} />
-               ))
-            }
-         </main>
-      </div>
+      <main>
+         {
+            albums.map(album => (
+               <Card key={album.id} album={album} />
+            ))
+         }
+      </main>
    );
 };
 
